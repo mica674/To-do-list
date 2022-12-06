@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "Fahkwang-Regular";
+    src: url(../font/Fahkwang/Fahkwang-Regular.ttf);
+}
+
+body{
+    background: url("../img/");
+}
+
+@media screen and (min-width:800px) {
+   
+}
