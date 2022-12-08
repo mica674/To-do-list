@@ -8,6 +8,9 @@ const elementParent = document.querySelector('.elementTest');
 const main = document.getElementById('container');
 let saveElement = document.getElementById('save');
 let deleteNote = document.getElementById('delete');
+let modalTitle = document.getElementById('exampleModalLabel');
+let modalDescription = document.getElementById('description');
+let saveElement = document.getElementById('save');
 
 // Local Storage
 // localStorage.setItem('elements', JSON.stringify(elements))
@@ -51,7 +54,31 @@ function displayNewItem(newItem) {
     let title = newItem.title;
     let time = newItem.time;
     let message = newItem.text;
+function updateElement(element) {
+        let card = element.parentNode;
+        let cardId = card.id;
+        elements.forEach((e)=>{
+            if (cardId.substr(7) == e.id) {
+                modalTitle.innerHTML = e.title;
+                modalDescription.value = e.text;
 
+                saveElement.addEventListener('click', () => {
+                    // e.title = modalTitle.innerHTML;
+                    e.text = modalDescription.value;
+                    console.log(elements[0].text);
+                })
+            }
+        })
+
+}
+
+let dot = document.querySelectorAll('.dot');
+
+dot.forEach(element => {
+    element.addEventListener('click', () => {
+        updateElement(element);
+    });
+        
     main.innerHTML += 
     `        
     <div class="container">
@@ -72,6 +99,8 @@ function displayNewItem(newItem) {
     </div>
     `;
 }
+});
+
 
 // Fonction d'affichage de tous les éléments au chargement de la page
 function display() {
