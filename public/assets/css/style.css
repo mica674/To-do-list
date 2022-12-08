@@ -1,12 +1,97 @@
 @font-face {
-    font-family: "Fahkwang-Regular";
-    src: url(../font/Fahkwang/Fahkwang-Regular.ttf);
+  font-family: 'Fahkwang-Regular';
+  src: url(../font/Fahkwang/Fahkwang-Regular.ttf);
 }
 
-body{
-    background: url("../img/");
+@font-face {
+  font-family: 'Fahkwang-Bold';
+  src: url(../font/Fahkwang/Fahkwang-Bold.ttf);
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: 'Fahkwang-Regular';
+  background-color: #242424;
 }
 
-@media screen and (min-width:800px) {
-   
+h1 {
+  font-family: 'Fahkwang-Bold';
+  color: white;
+  font-size: 3em;
+  margin-top: 40px;
+  margin-left: 15px;
+}
+
+h2 {
+  font-size: 2em;
+  margin-top: 5px;
+  font-family: 'Fahkwang-Regular';
+}
+
+#time1 {
+  margin-top: 5px;
+}
+
+#message1 {
+  margin-top: 15px;
+}
+
+#rowCard1 {
+  background-color: #484848;
+  border-top: 10px white solid;
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+#dot3 {
+  color: #bd00ff;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.addTache {
+  font-size: 3em;
+  border: none;
+  background: none;
+  color: #bd00ff;
+  margin-left: 15px;
+}
+
+.modalButton {
+  background-color: #bd00ff;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  font-family: 'Fahkwang-Regular';
+  padding: 0 6px;
+}
+
+.writeNote {
+  margin-top: 30px;
+  color: white;
+  text-align: center;
+}
+.note {
+  color: #bd00ff;
+}
+@media screen and (min-width: 720px) {
+  .row {
+    width: 400px;
+  }
+  h1 {
+    margin-left: 120px;
+  }
+  .writeNote {
+    text-align: justify;
+    margin-left: 100px;
+  }
+  textarea {
+    margin-left: 50px;
+  }
 }
