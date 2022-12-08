@@ -30,15 +30,15 @@ h2 {
   font-family: 'Fahkwang-Regular';
 }
 
-#time1 {
+.time {
   margin-top: 5px;
 }
 
-#message1 {
+.message {
   margin-top: 15px;
 }
 
-#rowCard1 {
+.rowCard {
   background-color: #484848;
   border-top: 10px white solid;
   color: white;
@@ -49,7 +49,7 @@ h2 {
   border-top-right-radius: 10px;
 }
 
-#dot3 {
+.dot {
   color: #bd00ff;
   font-weight: bold;
   font-size: 2em;
@@ -70,6 +70,7 @@ h2 {
   color: white;
   font-family: 'Fahkwang-Regular';
   padding: 0 6px;
+  display: flex;
 }
 
 .writeNote {
@@ -80,6 +81,13 @@ h2 {
 .note {
   color: #bd00ff;
 }
+.modal-content {
+  background-color: #242424;
+}
+.modal-header {
+  background-color: #484848;
+}
+
 @media screen and (min-width: 720px) {
   .row {
     width: 400px;

@@ -38,19 +38,20 @@ function display() {
   elements2.forEach((element) => {
     let title = element.title
     let time = element.time
-    let message1 = element.text
-    main.innerHTML += ` <div class="contenair">
-      <div class="row ms-lg-5" id="rowCard1">
+    let message = element.text
+    let id = element.id
+    main.innerHTML += ` <div class="container">
+      <div class="row rowCard ms-lg-5" id="rowCard${id}">
         <div class="col-6 text-start">
-          <h2 id="title1">${title}</h2>
+          <h2 class="title" id="title${id}">${title}</h2>
         </div>
-        <div class="col-6 text-end" id="time1">
+        <div class="col-6 time text-end" id="time${id}">
           <p>${time}</p>
         </div>
         <div class="col-10 text-start">
-          <p id="message1">${message1}</p>
+          <p class="message" id="message${id}">${message}</p>
         </div>
-        <div class="col-2 text-end" id="dot3">
+        <div class="col-2 dot text-end" id="dot${id}" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <p>...</p>
         </div>
       </div>
@@ -58,6 +59,13 @@ function display() {
   })
 }
 display()
+
+// supprimer les données du localStorage
+let deleteNote = document.getElementById('delete')
+deleteNote.addEventListener('click', function () {
+  localStorage.removeItem(`${message}`)
+})
+
 // Ciblage des élements HTML
 
 // Local Storage
