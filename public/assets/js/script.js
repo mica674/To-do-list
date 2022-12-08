@@ -2,15 +2,13 @@
 let elements2 =[];
 // Ciblage des élements HTML
 const btnCreate = document.querySelector('.addTache');
-const modalTitle = document.getElementById('exampleModalLabel');
+const modalTitle = document.getElementById('modalTitle');
 const modalDescription = document.getElementById('description');
 const elementParent = document.querySelector('.elementTest');
 const main = document.getElementById('container');
-let saveElement = document.getElementById('save');
-let deleteNote = document.getElementById('delete');
-let modalTitle = document.getElementById('exampleModalLabel');
-let modalDescription = document.getElementById('description');
-let saveElement = document.getElementById('save');
+const saveElement = document.getElementById('save');
+const deleteNote = document.getElementById('delete');
+const dot = document.querySelectorAll('.dot');
 
 // Local Storage
 // localStorage.setItem('elements', JSON.stringify(elements))
@@ -54,52 +52,46 @@ function displayNewItem(newItem) {
     let title = newItem.title;
     let time = newItem.time;
     let message = newItem.text;
+
+    main.innerHTML += 
+    `        
+    <div class="container">
+        <div class="row rowCard ms-lg-5" id="rowCard${id}">
+            <div class="col-6 text-start">
+                <h2 class="title" id="title${id}">${title}</h2>
+            </div>
+            <div class="col-6 time text-end" id="time${id}">
+                <p>${time}</p>
+            </div>
+            <div class="col-10 text-start">
+                <p class="message" id="message${id}">${message}</p>
+            </div>
+            <div class="col-2 dot text-end" id="dot${id}" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <p>...</p>
+            </div>
+        </div>
+    </div>
+    `;
+}
+
+// Fonction UPDATE
 function updateElement(element) {
         let card = element.parentNode;
         let cardId = card.id;
-        elements.forEach((e)=>{
+        elements2.forEach((e)=>{
             if (cardId.substr(7) == e.id) {
                 modalTitle.innerHTML = e.title;
                 modalDescription.value = e.text;
 
                 saveElement.addEventListener('click', () => {
-                    // e.title = modalTitle.innerHTML;
+                    e.title = modalTitle.innerHTML;
                     e.text = modalDescription.value;
-                    console.log(elements[0].text);
                 })
             }
         })
 
 }
 
-let dot = document.querySelectorAll('.dot');
-
-dot.forEach(element => {
-    element.addEventListener('click', () => {
-        updateElement(element);
-    });
-        
-    main.innerHTML += 
-    `        
-    <div class="container">
-        <div class="row rowCard ms-lg-5" id="rowCard${id}">
-        <div class="col-6 text-start">
-            <h2 class="title" id="title${id}">${title}</h2>
-        </div>
-        <div class="col-6 time text-end" id="time${id}">
-            <p>${time}</p>
-        </div>
-        <div class="col-10 text-start">
-            <p class="message" id="message${id}">${message}</p>
-        </div>
-        <div class="col-2 dot text-end" id="dot${id}" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <p>...</p>
-        </div>
-        </div>
-    </div>
-    `;
-}
-});
 
 
 // Fonction d'affichage de tous les éléments au chargement de la page
@@ -145,6 +137,14 @@ btnCreate.addEventListener('click', ()=>{
     localStorage.setItem('elements', JSON.stringify(elements2));
     })
 })
+
+// Au clique --> Update
+dot.forEach(element => {
+    element.addEventListener('click', () => {
+        updateElement(element);
+    }); 
+});
+
 
 // Supprimer les données du localStorage
 deleteNote.addEventListener('click', function () {
