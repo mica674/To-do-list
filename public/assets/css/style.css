@@ -3,10 +3,63 @@
     src: url(../font/Fahkwang/Fahkwang-Regular.ttf);
 }
 
+@font-face {
+    font-family: "Fahkwang-Bold";
+    src: url(../font/Fahkwang/Fahkwang-Bold.ttf);
+}
+
 body{
-    background: url("../img/");
+    font-family: "Fahkwang-Regular";
+    background-color: #242424;
+}
+
+h1{
+    font-family: "Fahkwang-Bold";
+    color: white;
+    font-size: 3em;
+    margin-top: 40px;
+    margin-left: 15px;
+}
+
+h2{
+    font-size: 2em;
+    margin-top: 5px;
+    font-family: "Fahkwang-Regular";
+}
+
+#time1{
+    margin-top: 5px;
+}
+
+#message1{
+    margin-top: 15px;
+}
+
+.row{
+    background-color: #484848;
+    border-top: 10px white solid;
+    color:white;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.dot{
+    color: #bd00ff;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+button{
+    font-size: 3em;
+    border: none;
+    background: none;
+    color: #bd00ff;
+    margin-left: 15px;
 }
 
 @media screen and (min-width:800px) {
-   
+
 }

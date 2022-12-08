@@ -15,19 +15,77 @@
 
     <!-- HEADER -->
     <header>
+        <!-- Bouton + Modal -->
 
+        <button id="button">+</button>
+
+        <!-- Fin du bouton -->
+
+        <!-- Titre h1 -->
+
+        <h1>To Do List</h1>
+
+        <!-- Fin titre h1 -->
     </header>
     <!-- HEADER END -->
+
 
     <!-- MAIN -->
     <main>
 
+        <div class="container-fluid">
+
+            <div class="row" id="rowCard1">
+                <div class="col-6 text-start">
+                    <h2 id="title1">Titre H2</h2>
+                </div>
+                <div class="col-6 text-end" id="time1">
+                    <span>12:30</span>
+                </div>
+                <div class="col-10 text-start">
+                    <p id="message1">Paragra</p>
+                </div>
+                <div class="col-2 text-end dot" id="dot1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <span>...</span>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+
+
         <!-- Fenetre modale -->
         <div class="modalWindow">
-
+            <div class="modal fade text-center" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <p contenteditable="true"><h2 class="modal-title writeNote" id="exampleModalLabel">Titre de la
+                                note</h2></p>
+                            <input type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></input>
+                        </div>
+                        <div class="modal-body text-dark">
+                            <textarea name="description" id="description" class="description" cols="37"
+                                rows="20"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <!-- Boutons supprimer & enregistrer -->
+                            <div class="container-fluid">
+                                <div class="row mx-0" id="rowCardModal">
+                                    <div class="col ms-3">
+                                        <button class="modalButton mb-2" id="delete">SUPPRIMER</button>
+                                    </div>
+                                    <div class="col ms-4">
+                                        <button class="modalButton mb-2" id="save">ENREGISTRER</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- Modale end -->
-
+        <!-- Modale end --
     </main>
     <!-- MAIN END -->
 
