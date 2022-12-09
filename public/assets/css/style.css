@@ -64,28 +64,54 @@ h2 {
 }
 
 .modalButton {
-  background-color: #bd00ff;
-  border-radius: 20px;
-  border: none;
-  color: white;
-  font-family: 'Fahkwang-Regular';
-  padding: 0 6px;
-  display: flex;
+    background-color: #bd00ff;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    font-family: 'Fahkwang-Regular';
+    padding: 0 6px;
+    display: flex;
+    font-size: 0.9em;
+    padding: 10px 20px 10px 20px;
+    font-weight: bold;
+}
+.modal{
+    background-color: #242424;
+    border: none;
+}
+
+.modal-dialog{
+    background-color: #242424;
+    border: none;
 }
 
 .writeNote {
   margin-top: 30px;
   color: white;
   text-align: center;
+  border: none;
 }
+
 .note {
   color: #bd00ff;
 }
+
 .modal-content {
   background-color: #242424;
 }
+
 .modal-header {
   background-color: #484848;
+  border: none;
+}
+
+.modal-footer{
+    border: none;
+}
+textarea{
+    background-color: #242424;
+    border: none;
+    color: white;
 }
 
 @media screen and (min-width: 720px) {

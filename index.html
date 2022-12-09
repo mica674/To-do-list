@@ -19,7 +19,7 @@
     <header>
       <!-- Bouton + Modal -->
 
-      <button class="addTache" id="button" data-bs-toggle="modal" data-bs-target="#exampleModal">+</button>
+      <button class="addTache" id="button" data-bs-toggle="modal" data-bs-target="#modalCreate">+</button>
 
       <!-- Fin du bouton -->
 
@@ -49,19 +49,49 @@
         </div> -->
       </div>
 
-      <!-- Fenetre modale -->
+      <!-- Fenetre modale CREATION-->
       <div class="modalWindow">
-        <div class="modal fade text-center" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        <div class="modal fade text-center" id="modalCreate" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <p contenteditable="true" class="modal-title writeNote" id="modalTitle">Titre de la
+                        <p contenteditable="true" class="modal-title writeNote" id="modalTitleCreation">Titre de la note</p>
+                        <input type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></input>
+                    </div>
+                    <div class="modal-body text-center m-0 p-0 text-dark">
+                        <textarea name="description" id="modalDescriptionCreation" class="description" cols="37"
+                            rows="20" placeholder="Rédigez votre note..."></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- Boutons supprimer & enregistrer -->
+                        <div class="container-fluid">
+                            <div class="row mx-0" id="rowCardModal">
+                                <div class="col text-center">
+                                    <button class="modalButton mb-2" id="save" data-bs-dismiss="modal">ENREGISTRER</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modale CREATION end -->
+
+    <!-- Fenetre modale UPDATE-->
+    <div class="modalWindow">
+        <div class="modal fade text-center" id="modalUpdate" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p contenteditable="true" class="modal-title writeNote" id="modalTitleUpdate">Titre de la
                             note</p>
                         <input type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></input>
                     </div>
                     <div class="modal-body text-center m-0 p-0 text-dark">
-                        <textarea name="description" id="description" class="description" cols="37"
+                        <textarea name="description" id="modalDescriptionUpdate" class="description" cols="37"
                             rows="20"></textarea>
                     </div>
                     <div class="modal-footer">
@@ -72,7 +102,7 @@
                                     <button class="modalButton mb-2" id="delete" data-bs-dismiss="modal">SUPPRIMER</button>
                                 </div>
                                 <div class="col text-end">
-                                    <button class="modalButton mb-2" id="save" data-bs-dismiss="modal">ENREGISTRER</button>
+                                    <button class="modalButton mb-2" id="update" data-bs-dismiss="modal">MODIFIER</button>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +111,8 @@
             </div>
         </div>
     </div>
-    <!-- Modale end -->
+    <!-- Modale UPDATE end -->
+    
     </main>
     <!-- MAIN END -->
 

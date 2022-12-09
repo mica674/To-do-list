@@ -2,13 +2,13 @@
 let elements2 =[];
 // Ciblage des élements HTML
 const btnCreate = document.querySelector('.addTache');
-const modalTitle = document.getElementById('modalTitle');
-const modalDescription = document.getElementById('description');
+const modalTitleUpdate = document.getElementById('modalTitleUpdate');
+const modalDescriptionUpdate = document.getElementById('modalDescriptionUpdate');
 const elementParent = document.querySelector('.elementTest');
 const main = document.getElementById('container');
 const saveElement = document.getElementById('save');
+const updateElement = document.getElementById('update');
 const deleteNote = document.getElementById('delete');
-const dot = document.querySelectorAll('.dot');
 
 // Local Storage
 // localStorage.setItem('elements', JSON.stringify(elements))
@@ -34,68 +34,50 @@ function idMax() {
 }
 
 // Fonction pour créer un nouvel item
-// en récupérant les valeurs données dans l'item
-function createElements(newId,titleVal, timeVal, textVal) {
+function createElements() {
+    let d = new Date();
+    dHoursMin = d.getHours()+':'+ d.getMinutes();
+    let newId = idMax()+1;
     let item = {
         id : newId,
-        title : titleVal,
-        time : timeVal,
-        text : textVal,
+        title : modalTitleCreation.innerHTML,
+        time : dHoursMin,
+        text : modalDescriptionCreation.value,
         check : false
     };
-    return item;
-}
 
-// Fonction pour afficher un nouvel élément créé
-function displayNewItem(newItem) {
-    let id = newItem.id;
-    let title = newItem.title;
-    let time = newItem.time;
-    let message = newItem.text;
-
-    main.innerHTML += 
-    `        
-    <div class="container">
-        <div class="row rowCard ms-lg-5" id="rowCard${id}">
-            <div class="col-6 text-start">
-                <h2 class="title" id="title${id}">${title}</h2>
-            </div>
-            <div class="col-6 time text-end" id="time${id}">
-                <p>${time}</p>
-            </div>
-            <div class="col-10 text-start">
-                <p class="message" id="message${id}">${message}</p>
-            </div>
-            <div class="col-2 dot text-end" id="dot${id}" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <p>...</p>
-            </div>
-        </div>
-    </div>
-    `;
+    elements2.push(item);
+    localStorage.setItem('elements', JSON.stringify(elements2));
+    display();
 }
 
 // Fonction UPDATE
-function updateElement(element) {
+function update(element) {
         let card = element.parentNode;
         let cardId = card.id;
         elements2.forEach((e)=>{
-            if (cardId.substr(7) == e.id) {
-                modalTitle.innerHTML = e.title;
-                modalDescription.value = e.text;
 
-                saveElement.addEventListener('click', () => {
-                    e.title = modalTitle.innerHTML;
-                    e.text = modalDescription.value;
-                })
+            console.log(1);
+            if (cardId.substr(7) == e.id) {
+                console.log(1);
+                modalTitleUpdate.innerHTML = e.title;
+                modalDescriptionUpdate.value = e.text;
+
+            updateElement.addEventListener('click', () => {
+                e.title = modalTitleUpdate.innerHTML;
+                e.text = modalDescriptionUpdate.value;
+                localStorage.setItem('elements', JSON.stringify(elements2));
+                display();
+            })
             }
         })
-
 }
-
-
 
 // Fonction d'affichage de tous les éléments au chargement de la page
 function display() {
+    main.innerHTML = '';
+    elements2 = JSON.parse(localStorage.getItem('elements'))
+
     elements2.forEach((element) => {
         let id = element.id
         let title = element.title
@@ -113,43 +95,24 @@ function display() {
             <div class="col-10 text-start">
                 <p class="message" id="message${id}">${message}</p>
             </div>
-            <div class="col-2 dot text-end" id="dot${id}" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <div class="col-2 dot text-end" id="dot${id}" data-bs-toggle="modal" data-bs-target="#modalUpdate">
                 <p>...</p>
             </div>
             </div>
         </div>`
     })
+    var dot = document.querySelectorAll('.dot');
+
+    dot.forEach((element) => {
+            element.addEventListener('click', () => {
+            update(element);
+        }); 
+    });
   }
 
 // EVENTS
-// Au clique sur le bouton (+)
-// appel de la fonction pour créer un nouvel élément 'newitem'
-// push de cet élément dans le tableau 'elements2'
-btnCreate.addEventListener('click', ()=>{
-    let d = new Date();
-    dHoursMin = d.getHours()+':'+ d.getMinutes();
-    let newId = idMax()+1;
 
-    saveElement.addEventListener('click',()=>{
-        let newItem = createElements(newId, modalTitle.innerHTML, dHoursMin, modalDescription.value);
-    elements2.push(newItem);
-    displayNewItem(newItem);
-    localStorage.setItem('elements', JSON.stringify(elements2));
-    })
-})
-
-// Au clique --> Update
-dot.forEach(element => {
-    element.addEventListener('click', () => {
-        updateElement(element);
-    }); 
-});
-
-
-// Supprimer les données du localStorage
-deleteNote.addEventListener('click', function () {
-    localStorage.removeItem(`${message}`)
-  })
+saveElement.addEventListener('click', createElements);
 
 // MAIN
 display();
